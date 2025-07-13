@@ -1,4 +1,26 @@
-# Welcome 
+## Joey Ross Skills Assessment
+
+for consideration on the DevOps team at Figure.
+
+The intent of this README.md update is to guide reviewers to where the assesement's requests are addressed within this repository.
+
+### Kubernetes
+
+For the `Kubernetes` secion, I've created a file named [fixed.yaml](./fixed.yaml) in the root of the repository with the following updates:
+
+1. Kubernetes Deployment YAML issues
+    - line #3: updated the incorrect kind `Deploy` => `Deployment`
+    - line #19: updated the incorrect image reference `current` => `latest`
+    - line #40: optional, but good practice to include a `targetPort`
+2. Requested resource limits are included on lines #22-#28
+
+### Go
+
+Included in the root of the directory is my Go application as requested. It was tested on a local running minikube using `go run main.go`.
+
+The original assessment remains below for reference.
+
+# Welcome
 
 Welcome to Figure's DevOps skills assessment! 
 
