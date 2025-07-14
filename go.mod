@@ -3,7 +3,7 @@ module k8s-restart-database
 go 1.24.4
 
 require (
-	github.com/clarkent86/figure-technologies-devops-skills-assesment/restart v0.3.0
+	github.com/clarkent86/figure-technologies-devops-skills-assesment/restart v0.5.0
 	k8s.io/client-go v0.33.2
 )
 

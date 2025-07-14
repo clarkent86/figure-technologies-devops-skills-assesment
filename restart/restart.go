@@ -12,9 +12,9 @@ import (
 	"k8s.io/client-go/kubernetes"
 )
 
-// RestartDatabases will gracefully rollout-restart every Deployment
+// RestartKeyword will gracefully rollout-restart every Deployment
 // whose name contains the given keyword, across all namespaces.
-func RestartDatabases(ctx context.Context, clientset kubernetes.Interface, keyword string) error {
+func RestartKeyword(ctx context.Context, clientset kubernetes.Interface, keyword string) error {
 	nsList, err := clientset.CoreV1().
 		Namespaces().
 		List(ctx, metav1.ListOptions{})
