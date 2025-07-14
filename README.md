@@ -2,11 +2,13 @@
 
 for consideration on the DevOps team at Figure.
 
-The intent of this README.md update is to guide reviewers to where the assesement's requests are addressed within this repository.
+The intent of this README.md update is to guide reviewers to where the assesement's requests are addressed within this
+repository.
 
 ### Kubernetes
 
-For the `Kubernetes` secion, I've created a file named [fixed.yaml](./fixed.yaml) in the root of the repository with the following updates:
+For the `Kubernetes` secion, I've created a file named [fixed.yaml](./fixed.yaml) in the root of the repository with the
+following updates:
 
 1. Kubernetes Deployment YAML issues
     - line #3: updated the incorrect kind `Deploy` => `Deployment`
@@ -16,21 +18,90 @@ For the `Kubernetes` secion, I've created a file named [fixed.yaml](./fixed.yaml
 
 ### Go
 
-Included in the root of the directory is my Go application as requested. It was tested on a local running minikube using `go run main.go`.
+Included in the root of the directory is my Go application as requested. It was tested on a local running minikube
+using:
 
-The original assessment remains below for reference.
+```bash
+go run main.go
+```
+
+I’ve also provided unit tests (located in restart_test.go) that validate the core logic—namespace filtering, concurrent
+processing limits, and error handling. These tests were generated with AI assistance (ChatGPT’s o4-mini-high model) to
+ensure comprehensive coverage and demonstrate automation capabilities.
+
+## Local Testing Instructions
+
+1. Spin up Minikube
+
+Ensure you have Minikube and kubectl installed.
+
+#### start a local cluster using Docker as the driver
+```bash
+minikube start --driver=docker
+```
+
+#### verify the node is ready
+```bash
+kubectl get nodes
+```
+
+2. Create Sample Deployments
+
+Deploy a few test applications (some with "database" in the name):
+
+```bash
+kubectl create deployment database-app --image=nginx
+kubectl create deployment mydatabase --image=nginx
+kubectl create deployment unrelated-app --image=nginx
+```
+
+Confirm they’re running:
+
+```bash
+kubectl get deployments
+kubectl get pods
+```
+
+3. Run the Restart Script
+
+#### by default it uses ~/.kube/config
+go run main.go
+
+You should see output indicating which deployments were matched and restarted.
+
+## Using a Different Kubernetes Environment
+
+If you need to point the tool at a different cluster or context:
+
+Switch context in your existing kubeconfig:
+
+```bash
+kubectl config use-context <your-context-name>
+go run main.go
+```
+
+Pass a custom kubeconfig file:
+
+```bash
+go run main.go --kubeconfig /path/to/other/config
+```
+
+The original assessment prompt follows below for reference.
+
 
 # Welcome
 
 Welcome to Figure's DevOps skills assessment! 
 
-The goal of this assessment is to get an idea of how you work and your ability to speak in depth about the details in your work. Generally, this assessment should not take you longer than 30 minutes to complete. 
+The goal of this assessment is to get an idea of how you work and your ability to speak in depth about the details in
+your work. Generally, this assessment should not take you longer than 30 minutes to complete. 
 
 Your answers will be reviewed with you in a subsequent interview.
 
 ## Instructions
 
-1. Click on the green "Use This Template" button in the upper-right corner and create a copy of this repository in your own GitHub account.
+1. Click on the green "Use This Template" button in the upper-right corner and create a copy of this repository in your
+own GitHub account.
 2. Name your respository and ensure that it's public, as you will need to share it with us for review.
 3. When you have completed the questions, please send the URL to the recruiter.
 
