@@ -22,6 +22,7 @@ func TestRestartDatabases(t *testing.T) {
 		deployments         map[string][]string
 		namespaceListErr    bool
 		deploymentListErrNs map[string]bool
+		updateListErrNs     map[string]bool // <- new
 		wantErr             bool
 	}{
 		{
@@ -56,10 +57,27 @@ func TestRestartDatabases(t *testing.T) {
 			deploymentListErrNs: map[string]bool{"ns1": true},
 			wantErr:             true,
 		},
+		{
+			name:       "mixed namespaces with multiple matches",
+			namespaces: []string{"alpha", "beta"},
+			deployments: map[string][]string{
+				"alpha": {"database-alpha", "app-alpha"},
+				"beta":  {"service-beta", "database-beta"},
+			},
+			wantErr: false,
+		},
+		{
+			name:            "update failure causes error",
+			namespaces:      []string{"ns1"},
+			deployments:     map[string][]string{"ns1": {"database-app"}},
+			updateListErrNs: map[string]bool{"ns1": true}, // you’ll need to add this field and reactor for "update"
+			wantErr:         true,
+		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
 			// Create fake clientset
 			cs := fake.NewSimpleClientset()
 
@@ -99,6 +117,17 @@ func TestRestartDatabases(t *testing.T) {
 							ns, metav1.CreateOptions{},
 						)
 					}
+				}
+				if tt.updateListErrNs[ns] {
+					// capture ns in loop
+					namespace := ns
+					cs.PrependReactor("update", "deployments", func(action clienttesting.Action) (bool, runtime.Object, error) {
+						ua := action.(clienttesting.UpdateAction)
+						if ua.GetNamespace() == namespace {
+							return true, nil, errors.New("update deployments error")
+						}
+						return false, nil, nil
+					})
 				}
 			}
 
