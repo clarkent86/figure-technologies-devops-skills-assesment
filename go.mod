@@ -3,12 +3,9 @@ module k8s-restart-database
 go 1.24.4
 
 require (
-	github.com/figure-technologies-devops-skills-assesment/restart v0.0.0
+	github.com/clarkent86/figure-technologies-devops-skills-assesment/restart v0.2.0
 	k8s.io/client-go v0.33.2
 )
-
-// can be removed once the module is published
-replace github.com/figure-technologies-devops-skills-assesment/restart => ./restart
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
