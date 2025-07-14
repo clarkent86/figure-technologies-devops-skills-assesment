@@ -18,7 +18,7 @@ import (
 	clienttesting "k8s.io/client-go/testing"
 )
 
-func TestRestartDatabases(t *testing.T) {
+func TestRestartKeyword(t *testing.T) {
 	tests := []struct {
 		name                string
 		namespaces          []string
@@ -134,9 +134,9 @@ func TestRestartDatabases(t *testing.T) {
 				}
 			}
 
-			err := restart.RestartDatabases(context.Background(), cs, "database")
+			err := restart.RestartKeyword(context.Background(), cs, "database")
 			if (err != nil) != tt.wantErr {
-				t.Fatalf("restartDatabases() error = %v, wantErr %v", err, tt.wantErr)
+				t.Fatalf("restartKeyword() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
 	}

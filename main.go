@@ -39,7 +39,7 @@ func main() {
 		panic(err)
 	}
 
-	err = restart.RestartDatabases(ctx, clientset, keyword)
+	err = restart.RestartKeyword(ctx, clientset, keyword)
 	if err != nil {
 		fmt.Println("Error restarting databases:", err)
 	}
