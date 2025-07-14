@@ -1,10 +1,11 @@
-package restart
+package restart_test
 
 import (
 	"context"
 	"errors"
 	"testing"
 
+	"github.com/clarkent86/figure-technologies-devops-skills-assesment/restart"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -101,7 +102,7 @@ func TestRestartDatabases(t *testing.T) {
 				}
 			}
 
-			err := RestartDatabases(context.Background(), cs, "database")
+			err := restart.RestartDatabases(context.Background(), cs, "database")
 			if (err != nil) != tt.wantErr {
 				t.Fatalf("restartDatabases() error = %v, wantErr %v", err, tt.wantErr)
 			}
