@@ -1,13 +1,13 @@
 module k8s-restart-database
 
-go 1.24.0
-
-toolchain go1.24.4
+go 1.24.4
 
 require (
-	k8s.io/apimachinery v0.33.2
+	github.com/figure-technologies-devops-skills-assesment/restart v0.0.0
 	k8s.io/client-go v0.33.2
 )
+
+replace github.com/figure-technologies-devops-skills-assesment/restart => ./restart
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -34,6 +34,7 @@ require (
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/net v0.41.0 // indirect
 	golang.org/x/oauth2 v0.30.0 // indirect
+	golang.org/x/sync v0.16.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/term v0.32.0 // indirect
 	golang.org/x/text v0.26.0 // indirect
@@ -43,6 +44,7 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/api v0.33.2 // indirect
+	k8s.io/apimachinery v0.33.2 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20250628140032-d90c4fd18f59 // indirect
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397 // indirect
