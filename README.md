@@ -2,13 +2,13 @@
 
 for consideration on the DevOps team at Figure.
 
-The intent of this README.md update is to guide reviewers to where the assesement's requests are addressed within this
+The intent of this README.md update is to guide reviewers to where the assessment's requests are addressed within this
 repository.
 
 ### Kubernetes
 
-For the `Kubernetes` secion, I've created a file named [fixed.yaml](./fixed.yaml) in the root of the repository with the
-following updates:
+For the `Kubernetes` section, I've created a file named [fixed.yaml](./fixed.yaml) in the root of the repository with
+the following updates:
 
 1. Kubernetes Deployment YAML issues
     - line #3: updated the incorrect kind `Deploy` => `Deployment`
@@ -102,7 +102,7 @@ Your answers will be reviewed with you in a subsequent interview.
 
 1. Click on the green "Use This Template" button in the upper-right corner and create a copy of this repository in your
 own GitHub account.
-2. Name your respository and ensure that it's public, as you will need to share it with us for review.
+2. Name your repository and ensure that it's public, as you will need to share it with us for review.
 3. When you have completed the questions, please send the URL to the recruiter.
 
 ## Assessments
