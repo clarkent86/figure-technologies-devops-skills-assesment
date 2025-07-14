@@ -7,6 +7,7 @@ require (
 	k8s.io/client-go v0.33.2
 )
 
+// can be removed once the module is published
 replace github.com/figure-technologies-devops-skills-assesment/restart => ./restart
 
 require (

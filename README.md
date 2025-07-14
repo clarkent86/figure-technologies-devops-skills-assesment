@@ -25,9 +25,9 @@ using:
 go run main.go
 ```
 
-I’ve also provided unit tests (located in restart_test.go) that validate the core logic—namespace filtering, concurrent
-processing limits, and error handling. These tests were generated with AI assistance (ChatGPT’s o4-mini-high model) to
-ensure comprehensive coverage and demonstrate automation capabilities.
+I’ve also provided unit tests (located in [restart_test.go](./restart/restart_test.go)) that validate the core
+logic—namespace filtering, concurrent processing limits, and error handling. These tests were generated with AI
+assistance (ChatGPT’s o4-mini-high model) to ensure comprehensive coverage and demonstrate automation capabilities.
 
 ## Local Testing Instructions
 
